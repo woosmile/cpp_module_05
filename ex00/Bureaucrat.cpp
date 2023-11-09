@@ -4,16 +4,14 @@ Bureaucrat::Bureaucrat(): _name("default"), _grade(150)
 {
 }
 
-Bureaucrat::Bureaucrat(const std::string name, const int grade): _name(name)
+Bureaucrat::Bureaucrat(const std::string name, const int grade): _name(name), _grade(grade)
 {
 	try
 	{
-		if (grade < 1)
+		if (_grade < 1)
 			throw (Bureaucrat::GradeTooHighException());
-		else if (grade > 150)
+		else if (_grade > 150)
 			throw (Bureaucrat::GradeTooLowException());
-		else
-			_grade = grade;
 	}
 	catch(std::exception& e)
 	{
@@ -25,28 +23,27 @@ Bureaucrat::~Bureaucrat()
 {
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &other): _name("copy")
+Bureaucrat::Bureaucrat(const Bureaucrat &other): _name(other._name), _grade(other._grade)
 {
-	*this = other;
+	try
+	{
+		if (_grade < 1)
+			throw (Bureaucrat::GradeTooHighException());
+		else if (_grade > 150)
+			throw (Bureaucrat::GradeTooLowException());
+	}
+	catch(std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat &other)
 {
 	if (this != &other)
 	{
-		try
-		{
-			if (other._grade < 1)
-				throw (Bureaucrat::GradeTooHighException());
-			else if (other._grade > 150)
-				throw (Bureaucrat::GradeTooLowException());
-			else
-				_grade = other._grade;
-		}
-		catch(std::exception& e)
-		{
-			std::cerr << e.what() << '\n';
-		}
+		this->~Bureaucrat();
+		new(this) Bureaucrat(other._name, other._grade);
 	}
 	return (*this);
 }
@@ -81,7 +78,7 @@ void	Bureaucrat::DecGrade()
 	try
 	{
 		if (_grade >= 150)
-			throw (Bureaucrat::GradeTooHighException());
+			throw (Bureaucrat::GradeTooLowException());
 		else
 			_grade++;
 	}
