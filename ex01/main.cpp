@@ -2,29 +2,40 @@
 
 int main()
 {
-	Bureaucrat	b1("woosekim", 1);
-	Bureaucrat	b2("b2", 11);
-	Form		f1("f1", 10, 10);
-	Form		f2("f2", 20, 20);
-	Form		copy(f1);
+	try
+	{
+		Bureaucrat	w1("woosekim_1", 1);
+		Bureaucrat	b20("b_20", 20);
 
-	std::cout << b1;
-	std::cout << b2;
-	std::cout << f1;
-	std::cout << f2;
-	std::cout << copy;
+		Form		f2("f_2", 2, 2);
+		Form		f5("f_5", 5, 5);
+		Form		copy(f2);
 
-	f1.BeSigned(b2);
-	std::cout << f1;
-	f2.BeSigned(b2);
-	std::cout << f2;
-	f1.BeSigned(b1);
-	std::cout << f1;
-	copy.BeSigned(b1);
-	std::cout << copy;
+		std::cout << w1;
+		std::cout << b20;
+		std::cout << f2;
+		std::cout << f5;
+		std::cout << copy;
+		
+		f2.beSigned(w1);
+		std::cout << f2;
+		// f5.BeSigned(b20);
+		std::cout << f5;
 
-	copy = f2;
-	std::cout << copy;
+		std::cout << copy;
+
+		copy = f5;
+		std::cout << copy;
+
+		b20.signForm(f5);
+		std::cout << f5;
+		w1.signForm(f5);
+		std::cout << f5;
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 
 	return (0);
 }

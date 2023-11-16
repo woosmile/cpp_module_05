@@ -2,33 +2,40 @@
 
 int main()
 {
-	Bureaucrat	b1;
-	Bureaucrat	b2("woosekim", 1);
-	Bureaucrat	copy(b2);
+	try
+	{
+		Bureaucrat	b150("b_150", 150);
+		Bureaucrat	w1("woosekim_1", 1);
+		Bureaucrat	copy(w1);
 
-	std::cout << b1;
-	std::cout << b2;
-	std::cout << copy;
+		std::cout << b150;
+		std::cout << w1;
+		std::cout << copy;
 
-	b1.DecGrade();
-	b2.IncGrade();
-	copy.IncGrade();
+		// b150.DecGrade();
+		w1.decGrade();
+		copy.decGrade();
 
-	std::cout << b1;
-	std::cout << b2;
-	std::cout << copy;
+		std::cout << b150;
+		std::cout << w1;
+		std::cout << copy;
 
-	b1.IncGrade();
-	b2.DecGrade();
-	copy.DecGrade();
+		w1.incGrade();
+		// b150.DecGrade();
+		copy.decGrade();
 
-	std::cout << b1;
-	std::cout << b2;
-	std::cout << copy;
+		std::cout << b150;
+		std::cout << w1;
+		std::cout << copy;
 
-	copy = b1;
+		copy = b150;
 
-	std::cout << copy;
-
+		std::cout << copy;
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	
 	return (0);
 }

@@ -19,11 +19,11 @@ class Form
 		Form(const Form &other);
 		Form&		operator=(const Form &other);
 	public:
-		std::string		GetName() const;
-		bool			GetSign() const;
-		int				GetSignGrade() const;
-		int				GetExecGrade() const;
-		void			BeSigned(const Bureaucrat &bureaucrat);
+		std::string		getName() const;
+		bool			getSign() const;
+		int				getSignGrade() const;
+		int				getExecGrade() const;
+		void			beSigned(const Bureaucrat &bureaucrat);
 	public:
 		class GradeTooHighException: public std::exception
 		{
