@@ -75,7 +75,7 @@ void	AForm::beSigned(const Bureaucrat &bureaucrat)
 
 bool	AForm::checkExecGrade(Bureaucrat const &bureaucrat) const
 {
-	if (_exec_grade < bureaucrat.getGrade())
+	if (_exec_grade <= bureaucrat.getGrade())
 		return (false);
 	else
 		return (true);
