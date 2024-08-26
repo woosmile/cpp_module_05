@@ -4,7 +4,7 @@
 - try-catch 예외처리
 - std::exception 객체를 상속받아 사용자 정의 예외 객체를 사용하는 방법
 
-## 구현 내용
+## 과제 내용
 
 ### ex00
 - Bureaucrat(관료) 클래스 구현
